@@ -2,6 +2,7 @@
   "name": "electron-and-react",
   "version": "1.0.0",
   "main": "build/electron.js",
+  "homepage": "./",
   "icon": "build/logo512.png",
   "description": "Aplicação ElectronJS com ReactJS",
   "private": false,
@@ -19,7 +20,7 @@
     "start:electron": "npm run build:backend && electron . --dev",
     "build:frontend": "react-scripts build",
     "build:backend": "tsc -p backend",
-    "build": "npm run clean && npm run build:backend && npm run build:frontend",
+    "build": "npm run clean && npm run build:frontend && npm run build:backend",
     "dist": "npm run build && electron-builder"
   },
   "dependencies": {
