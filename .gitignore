@@ -26,3 +26,4 @@ yarn-error.log*
 /main
 /dist
 .env
+/certificate*

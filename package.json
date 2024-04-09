@@ -17,7 +17,7 @@
     "clean": "rimraf build",
     "deps": "electron-builder install-app-deps",
     "rebuild": "electron-builder node-gyp-rebuild",
-    "cert": "electron-builder create-self-signed-cert -p certficate",
+    "cert": "electron-builder create-self-signed-cert -p certificate",
     "postinstall": "npm run deps",
     "start:frontend": "cross-env BROWSER=none react-scripts start",
     "start:electron": "npm run build:backend && electron . --dev",
