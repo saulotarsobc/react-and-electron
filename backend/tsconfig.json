@@ -20,7 +20,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "outDir": "../main",
+    "outDir": "../public",
     "removeComments": true
   },
   "exclude": [
@@ -29,6 +29,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js"
+    "**/*.js",
+    "electron.ts"
   ]
 }

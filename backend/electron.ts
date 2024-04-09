@@ -34,7 +34,7 @@ const createWindow = () => {
     isStart || isDev
       ? `http://localhost:3000/`
       : format({
-          pathname: join(__dirname, "../build/index.html"),
+          pathname: join(__dirname, "index.html"),
           protocol: "file:",
           slashes: true,
         })

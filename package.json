@@ -1,18 +1,26 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "electron-and-react",
+  "version": "1.0.0",
+  "main": "build/electron.js",
+  "icon": "build/logo512.png",
+  "description": "Aplicação ElectronJS com ReactJS",
   "private": false,
-  "main": "main/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Saulo Costa",
+    "email": "saulotarsobc@gmail.com",
+    "url": "https://github.com/saulotarsobc/electron-and-react"
+  },
   "scripts": {
     "dev": "concurrently \"npm run start:react\" \"npm run start:electron\"",
-    "start": "concurrently \"npm run start:react\" \"npm run start:electron\"",
-    "build": "npm run clean && npm run build:frontend && npm run build:backend",
-    "clean": "rimraf main build",
+    "clean": "rimraf build/",
+    "postinstall": "electron-builder install-app-deps",
     "start:react": "react-scripts start",
     "start:electron": "npm run build:backend && electron . --dev",
     "build:frontend": "react-scripts build",
-    "build:backend": "npx tsc -p backend",
-    "dist": "npm run build && npx electron-builder"
+    "build:backend": "tsc -p backend",
+    "build": "npm run clean && npm run build:backend && npm run build:frontend",
+    "dist": "npm run build && electron-builder"
   },
   "dependencies": {
     "@types/node": "^16.18.95",
@@ -22,22 +30,23 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.4.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "concurrently": "^8.2.2",
     "electron": "^29.2.0",
     "electron-builder": "^24.13.3",
     "rimraf": "^5.0.5"
   },
   "build": {
-    "productName": "SC - Electron Typescript Next",
-    "appId": "electron-typescript-next",
+    "productName": "SC - Electron React",
+    "appId": "br.com.electron.react",
     "win": {
       "target": [
         "nsis"
       ],
-      "icon": "./build/logo192.png",
+      "icon": "./build/logo512.png",
       "publish": [
         "github"
       ],
@@ -46,17 +55,13 @@
     },
     "mac": {
       "target": "dmg",
-      "icon": "./build/icon.png"
+      "icon": "./build/logo512.png"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     },
-    "asar": true,
-    "files": [
-      "main",
-      "build"
-    ]
+    "asar": true
   },
   "eslintConfig": {
     "extends": [
