@@ -1,3 +1,10 @@
+# use
+
+```sh
+cp .env.example .env
+npm run cert # in administrator mode
+```
+
 # road...
 
 - [x] Electron

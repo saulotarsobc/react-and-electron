@@ -15,15 +15,18 @@
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:electron\"",
     "clean": "rimraf build",
-    "postinstall": "electron-builder install-app-deps",
+    "deps": "electron-builder install-app-deps",
+    "rebuild": "electron-builder node-gyp-rebuild",
+    "cert": "electron-builder create-self-signed-cert -p certficate",
+    "postinstall": "npm run deps",
     "start:frontend": "cross-env BROWSER=none react-scripts start",
     "start:electron": "npm run build:backend && electron . --dev",
     "build:frontend": "react-scripts build",
     "build:backend": "tsc -p backend",
     "build": "npm run clean && npm run build:frontend && npm run build:backend",
-    "dist:w": "npm run build && electron-builder --win --x64",
-    "dist:l": "npm run build && electron-builder --linux deb",
-    "dist:m": "npm run build && electron-builder --mac"
+    "dist:w": "npm run build && electron-builder build --win",
+    "dist:l": "npm run build && electron-builder build --linux",
+    "dist:m": "npm run build && electron-builder build --mac"
   },
   "dependencies": {
     "@types/node": "^16.18.95",
