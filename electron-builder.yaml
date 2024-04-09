@@ -1,11 +1,13 @@
 productName: SC - Electron React
 appId: br.com.electron.react
-extends: react-cra
-electronVersion: 29.2.0
 asar: true
 
 extraMetadata:
   main: build/electron.js
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
 
 # Windows
 win:
@@ -23,7 +25,3 @@ win:
 mac:
   target: dmg
   icon: ./build/logo512.png
-
-nsis:
-  oneClick: false
-  allowToChangeInstallationDirectory: true
