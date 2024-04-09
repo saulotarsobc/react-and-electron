@@ -2,7 +2,7 @@
   "name": "react-and-electron",
   "version": "1.0.0",
   "main": "build/electron.js",
-  "homepage": "./",
+  "homepage": ".",
   "icon": "build/logo512.png",
   "description": "Aplicação ElectronJS com ReactJS",
   "private": false,
@@ -14,14 +14,16 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:electron\"",
-    "clean": "rimraf build/",
+    "clean": "rimraf build",
     "postinstall": "electron-builder install-app-deps",
     "start:frontend": "cross-env BROWSER=none react-scripts start",
     "start:electron": "npm run build:backend && electron . --dev",
     "build:frontend": "react-scripts build",
     "build:backend": "tsc -p backend",
     "build": "npm run clean && npm run build:frontend && npm run build:backend",
-    "dist": "npm run build && electron-builder"
+    "dist:w": "npm run build && electron-builder --win --x64",
+    "dist:l": "npm run build && electron-builder --linux deb",
+    "dist:m": "npm run build && electron-builder --mac"
   },
   "dependencies": {
     "@types/node": "^16.18.95",
@@ -40,30 +42,6 @@
     "electron": "^29.2.0",
     "electron-builder": "^24.13.3",
     "rimraf": "^5.0.5"
-  },
-  "build": {
-    "productName": "SC - Electron React",
-    "appId": "br.com.electron.react",
-    "win": {
-      "target": [
-        "nsis"
-      ],
-      "icon": "./build/logo512.png",
-      "publish": [
-        "github"
-      ],
-      "publisherName": "Saulo INC",
-      "artifactName": "${productName}-Setup-${version}.${ext}"
-    },
-    "mac": {
-      "target": "dmg",
-      "icon": "./build/logo512.png"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
-    },
-    "asar": true
   },
   "eslintConfig": {
     "extends": [
