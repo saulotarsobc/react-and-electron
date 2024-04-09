@@ -1,8 +1,8 @@
 {
   "name": "react-and-electron",
   "version": "1.0.0",
-  "main": "build/electron.js",
-  "homepage": ".",
+  "main": "public/electron.js",
+  "homepage": "./",
   "icon": "build/logo512.png",
   "description": "Aplicação ElectronJS com ReactJS",
   "private": false,

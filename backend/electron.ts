@@ -35,7 +35,7 @@ const createWindow = () => {
       ? `http://localhost:3000/`
       : format({
           pathname: join(__dirname, "index.html"),
-          protocol: "file:",
+          protocol: "file",
           slashes: true,
         })
   );
