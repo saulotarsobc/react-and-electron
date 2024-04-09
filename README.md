@@ -4,6 +4,7 @@
 ./create_cert.sh
 export CSC_LINK="certificate.pfx"
 export CSC_KEY_PASSWORD="senha_do_certificate"
+npm run dist:w
 ```
 
 # signtoll command
