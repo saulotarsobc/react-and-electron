@@ -1,5 +1,5 @@
-import { join } from "path";
-import { format } from "url";
+import { join, resolve } from "path";
+// import { format } from "url";
 import { BrowserWindow, app, ipcMain, IpcMainEvent, dialog } from "electron";
 
 import { isDev, isStart } from "./utils/env";
@@ -31,15 +31,18 @@ const createWindow = () => {
   if (isDev) mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL(
-    isStart || isDev
-      ? `http://localhost:3000/`
-      : format({
-          pathname: join(__dirname, "index.html"),
-          protocol: "file",
-          slashes: true,
-        })
+    isStart || isDev ? `http://localhost:3000/` : resolveHtmlPath("index.html")
+    // : format({
+    //     pathname: join(__dirname, "index.html"),
+    //     protocol: "file",
+    //     slashes: true,
+    //   })
   );
 };
+
+function resolveHtmlPath(htmlFileName: string) {
+  return `file://${resolve(__dirname, htmlFileName)}`;
+}
 
 // Prepare the frontend once the app is ready
 // Prepare o frontend quando o aplicativo estiver pronto
